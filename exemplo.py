@@ -66,6 +66,7 @@ def escreva(texto):
 escreva(texto=texto)
 
 #
+# from time import sleep
 
 
 def contador(inicio: int, fim: int, passo: int):
@@ -103,3 +104,55 @@ inicio = int(input('Inicio: '))
 fim = int(input('Fim:    '))
 passo = int(input('Passo:  '))
 contador(inicio=inicio, fim=fim, passo=passo)
+
+# docstring
+
+
+def contador(inicio: int, fim: int, passo: int):
+    """
+    Faz uma contagem e mostra na tela
+
+    Args:
+        inicio (int): Inicio da contagem - de n
+        fim (int): fim da contagem - a n
+        passo (int): passo da contagem - de n em n
+    """
+    contagem: int = inicio
+    while contagem <= fim:
+        print(contagem, end=' ')
+        contagem += passo
+    print('Fim')
+
+
+# help mostra a docstring criada para a função
+help(contador)
+
+#
+ano_nascimento = int(input('Em que ano você nasceu? '))
+
+
+def voto(ano: int):
+    """
+    Analisa possibilidade de voto a partir do ano de nascimento
+
+    Args:
+        ano (int): ano de nascimento: AAAA
+
+    Returns:
+        str: VOTO OBRIGATÓRIO
+        str: VOTO OPCIONAL
+        str: NÃO VOTA
+    """
+    from datetime import date  # importar dentro da funçao economiza memoria pois é executado "local"
+    ano_atual = date.today().year
+    idade = ano_atual - ano_nascimento
+
+    if idade >= 18 and idade <= 65:
+        return f'Com {idade} anos: VOTO OBRIGATÓRIO.'
+    elif 16 <= idade < 18 or idade > 65:
+        return f'Com {idade} anos: VOTO OPCIONAL.'
+    else:
+        return f'Com {idade} anos: NÃO VOTA.'
+
+
+print(voto(ano=ano_nascimento))
