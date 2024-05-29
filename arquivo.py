@@ -1,8 +1,11 @@
 def csv_reader(path: str) -> list:
     """
-    Faz a leitura do arquivo csv 
-    Transforma dados em um dicionario
-    Armazena s dados em uma lista
+    Inicializa uma lista vazia para armazenar os dados
+    Usa o gerenciador de contexto `with` para abrir o arquivo
+    Cria um objeto leitor de CSV
+    Itera sobre as linhas do arquivo CSV
+    Adiciona cada linha (um dicionário) à lista de dados
+    Exibe os dados lidos do arquivo CSV
 
     Args:
         path (str): caminho do arquivo csv
@@ -19,7 +22,8 @@ def csv_reader(path: str) -> list:
         for l in csv_reader:
             covid_data.append(l)
 
-    return covid_data
+    for d in covid_data:
+        print(d)
 
 
-print(csv_reader(path='arquivo.csv'))
+csv_reader(path='arquivo.csv')
